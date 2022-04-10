@@ -16,10 +16,21 @@
     <form action="{{route('admin.posts.store')}}" method="POST" novalidate>
         @csrf
         <div class="row">
-            <div class="col-12">        
+            <div class="col-9">        
                 <div class="form-group">
                     <label for="title">Post Title</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="post title" value="{{old('title')}}" required>
+                </div>
+            </div>
+            <div class="col-3">        
+                <div class="form-group">
+                    <label for="category">Post category</label>
+                    <select class="form-control" id="category" name="category_id" value="{{old('category_id')}}" >
+                        <option value="">---</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->label}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-12">
