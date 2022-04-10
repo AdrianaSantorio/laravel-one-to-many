@@ -17,6 +17,7 @@
                 <tr>
                     <th scope="col"></th>
                     <th scope="col">Title</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Slug</th>
                     <th scope="col">Updated at</th>
                     <th scope="col">Actions</th>
@@ -28,6 +29,12 @@
                     <tr>
                         <th scope="row"> {{$post->id}}</th>
                         <td>{{$post->title}}</td>
+                        <td>
+                            @if ($post->category)
+                            {{$post->category->label}}
+                            @else - 
+                            @endif
+                        </td>
                         <td>{{$post->slug}}</td>
                         <td>{{$post->updated_at}}</td>
                         <td class="d-flex justify-content-end align-items-center">
