@@ -28,7 +28,7 @@
                     <select class="form-control" id="category" name="category_id" value="{{old('category_id')}}" >
                         <option value="">---</option>
                         @foreach ($categories as $category)
-                        <option value="{{$category->id}}">{{$category->label}}</option>
+                        <option value="{{$category->id}}" @if(old('category_id') == $category->id) selected @endif>{{$category->label}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col-11">
                 <div class="form-group">
                     <label for="image">Post image</label>
-                    <input type="url" class="form-control" name="image" id="image" placeholder="Image Url" value="{{old('image')}}">
+                    <input type="url" class="form-control" name="image" id="image" value="{{old('image')}}">
                 </div>
             </div>
             <div class="col-1">

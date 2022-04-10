@@ -48,7 +48,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|unique:posts|min:5|max:50',
             'content' => 'required|string',
-            'image' => 'url'
+            'image' => 'nullable|url',
+            'category_id' => 'nullable|exists:categories,id'
         ], [
             'title.required' => 'The title field must be filled',
             'title.unique' => "A post titled '$request->title' was already posted"
@@ -100,7 +101,8 @@ class PostController extends Controller
         $request->validate([
             'title' => ['required', 'string', Rule::unique('posts')->ignore($post->id), 'min:5', 'max:50'],
             'content' => 'required|string',
-            'image' => 'url'
+            'image' => 'nullable|url',
+            'category_id' => 'nullable|exists:categories,id'
         ], [
             'title.required' => 'The title field must be filled',
             'title.unique' => "A post titled '$request->title' was already posted"
