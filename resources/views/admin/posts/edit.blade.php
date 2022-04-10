@@ -17,10 +17,21 @@
         @method('PUT')
         @csrf
         <div class="row">
-            <div class="col-12">        
+            <div class="col-9">        
                 <div class="form-group">
                     <label for="title">Post Title</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="post title" value="{{old('title', $post->title)}}" required>
+                </div>
+            </div>
+            <div class="col-3">        
+                <div class="form-group">
+                    <label for="category">Post category</label>
+                    <select class="form-control" id="category" name="category_id" value="{{old('category_id', $post->category_id)}}" >
+                        <option value="">---</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}" @if(old('category_id', $post->category_id) == $category->id) selected @endif>{{$category->label}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-12">
