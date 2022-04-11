@@ -29,7 +29,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Category $category)
+    public function create()
     {
         $categories = Category::all();
 
@@ -83,7 +83,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post, Category $category)
+    public function edit(Post $post)
     {
         $categories = Category::all();
         return view('admin.posts.edit', compact('post', 'categories'));
